@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: video-indexer-helper
+    env: python
+    plan: starter
+    buildCommand: pip install -r API-Samples/Python/requirements.txt
+    startCommand: bash -c "cd API-Samples/Python && uvicorn render_service:app --host 0.0.0.0 --port $PORT"
+    autoDeploy: true
+    envVars:
+      - key: VI_ACCOUNT_ID
+        sync: false
+      - key: VI_LOCATION
+        sync: false
+      - key: VI_SUBSCRIPTION_KEY
+        sync: false
+      - key: VI_DEFAULT_LANGUAGE
+        value: English
+      - key: VI_WAIT_TIMEOUT_SECONDS
+        value: "900"
+      - key: VI_POLL_INTERVAL_SECONDS
+        value: "10"

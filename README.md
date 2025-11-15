@@ -57,6 +57,35 @@ You should have an active user to Video Indexer.
 Start by Signing-up to [Video Indexer API](https://api-portal.videoindexer.ai/) and get your API key.
 
 We also recommend to start with our [short and basic introduction to Video Indexer]([https://github.com/itayar/test/blob/master/labTest.md](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)), if you are not familiar with VI.
+
+## Features
+### Azure Video Indexer API Setup Guide
+- **Purpose**: Step-by-step instructions to collect API keys, configure the Python samples, upload videos, and retrieve insights without deploying any additional infrastructure.
+- **Usage example**:
+  ```bash
+  # After following the guide, authenticate and upload a video via curl
+  curl -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos" \
+       -H "Authorization: Bearer <access_token>" \
+       -F "name=sample" \
+       -F "videoUrl=https://contoso.com/video.mp4"
+  ```
+- **Dependencies**: Requires a Video Indexer account plus either an API key (primary/secondary) or Azure AD credentials. Read the full instructions in [`API-Samples/VIDEO_INDEXER_SETUP.md`](API-Samples/VIDEO_INDEXER_SETUP.md).
+
+### Render-hosted Video Indexer helper API
+- **Purpose**: Deploy the new FastAPI helper (`render_service.py`) to Render.com so you can call the Video Indexer APIs from the cloud instead of running notebooks locally.
+- **Usage example**:
+  ```bash
+  # Upload a video through the Render deployment
+  curl -X POST https://<your-service>.onrender.com/videos/url \
+       -H "Content-Type: application/json" \
+       -d '{
+             "name": "sample",
+             "video_url": "https://contoso.com/video.mp4",
+             "wait_for_index": true,
+             "include_index_payload": true
+           }'
+  ```
+- **Dependencies**: Requires a Render.com account plus the Video Indexer API key, account ID, and location as environment variables. The helper service now relies only on Render-supported PyPI packages (`requests`, `azure-identity`, `fastapi`, `uvicorn`), so `pip install -r API-Samples/Python/requirements.txt` succeeds out-of-the-box. Follow [`API-Samples/RENDER_DEPLOYMENT.md`](API-Samples/RENDER_DEPLOYMENT.md) for the deployment walkthrough and use the root-level [`render.yaml`](render.yaml) blueprint for one-click provisioning.
 <!--
 Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases. 
 -->
