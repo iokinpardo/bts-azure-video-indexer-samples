@@ -85,7 +85,7 @@ We also recommend to start with our [short and basic introduction to Video Index
              "include_index_payload": true
            }'
   ```
-- **Dependencies**: Requires a Render.com account plus the Video Indexer API key, account ID, and location as environment variables. Follow [`API-Samples/RENDER_DEPLOYMENT.md`](API-Samples/RENDER_DEPLOYMENT.md) for the deployment walkthrough and use the root-level [`render.yaml`](render.yaml) blueprint for one-click provisioning.
+- **Dependencies**: Requires a Render.com account plus the Video Indexer API key, account ID, and location as environment variables. The helper service now relies only on Render-supported PyPI packages (`requests`, `azure-identity`, `fastapi`, `uvicorn`), so `pip install -r API-Samples/Python/requirements.txt` succeeds out-of-the-box. Follow [`API-Samples/RENDER_DEPLOYMENT.md`](API-Samples/RENDER_DEPLOYMENT.md) for the deployment walkthrough and use the root-level [`render.yaml`](render.yaml) blueprint for one-click provisioning.
 <!--
 Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases. 
 -->
