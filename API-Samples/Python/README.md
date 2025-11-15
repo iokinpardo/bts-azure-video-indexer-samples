@@ -54,3 +54,11 @@ For more information visit [here](https://docs.microsoft.com/en-us/azure/media-s
 <!--
 Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases.
 -->
+
+## Optional: Deploy the helper API to Render.com
+
+If you would rather expose the samples through a hosted endpoint, deploy `render_service.py` to Render.com.
+The service wraps the upload/index APIs, accepts JSON requests at `/videos/url`, and surfaces the
+insights payload via `/videos/{videoId}`. Follow the step-by-step instructions in
+[`API-Samples/RENDER_DEPLOYMENT.md`](../RENDER_DEPLOYMENT.md) and use the included `render.yaml`
+blueprint to set up the Python 3 web service with the correct build/start commands.
